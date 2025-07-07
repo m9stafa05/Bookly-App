@@ -1,5 +1,5 @@
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_app_bar.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/custom_list_view_item.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/featured_bokks_list_view.dart';
 import 'package:flutter/material.dart';
 
 class HoweViewBody extends StatelessWidget {
@@ -8,7 +8,7 @@ class HoweViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
-      children: [CustomAppBar(), CustomListViewItem()],
+      children: [CustomAppBar(), FeaturedBooksListView()],
     );
   }
 }
