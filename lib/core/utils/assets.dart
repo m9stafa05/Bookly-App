@@ -1,3 +1,3 @@
 class AssetsData {
-  static const logo = 'assets/images/BOOKLY.svg';
+  static const logo = 'assets/images/Logo.svg';
 }
