@@ -4,21 +4,24 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 
 class BookRating extends StatelessWidget {
-  const BookRating({super.key});
-
+  const BookRating({
+    super.key,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+  });
+  final MainAxisAlignment mainAxisAlignment;
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: mainAxisAlignment,
       children: [
         const Icon(
           FontAwesomeIcons.solidStar,
           color: Color(0xffFFDD4F),
-          size: 20,
+          size: 18,
         ),
-        const Gap(10),
+        const Gap(8),
         const Text('4.8', style: Styles.textStyle16),
-        const Gap(3),
+        const Gap(5),
         Text(
           '(5242)',
           style: Styles.textStyle16.copyWith(
