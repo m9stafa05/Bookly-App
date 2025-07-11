@@ -1,10 +1,6 @@
-import 'package:bookly_app/constants.dart';
-import 'package:bookly_app/core/utils/styles.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/book_rating.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/books_actions_button.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/book_details_section.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_books_details_app_bar.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/similar_books_list_view.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/similar_books_section.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -12,51 +8,26 @@ class BookDetailsViewBody extends StatelessWidget {
   const BookDetailsViewBody({super.key});
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
-      child: Column(
-        children: [
-          const CustomBookDetailsAppBar(),
-          const Gap(10),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: width * .19),
-            child: const CustomBookImage(),
-          ),
-          const Gap(40),
-          const Text('The Jungle Book', style: Styles.textStyle30),
-          const Gap(2),
-          Text(
-            'Rudyard Kipling',
-            style: Styles.textStyle18.copyWith(
-              fontFamily: kMontserrat,
-              fontWeight: FontWeight.w400,
-              color: const Color(0x92CACACA),
-              fontStyle: FontStyle.italic,
+    return const CustomScrollView(
+      slivers: [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.0),
+            child: Column(
+              children: [
+                CustomBookDetailsAppBar(),
+                Gap(10),
+                BookDetailsSection(),
+                Expanded(child: Gap(40)),
+                SimilarBooksSection(),
+              ],
             ),
           ),
-          const Gap(10),
-          const BookRating(
-            mainAxisAlignment: MainAxisAlignment.center,
-          ),
-          const Gap(25),
-          const BooksActionButton(),
-          const Gap(40),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'You can also like',
-              style: Styles.textStyle16.copyWith(
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-          const Gap(10),
-          const SimilarBooksListView(),
-          const Gap(10),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
+
 
