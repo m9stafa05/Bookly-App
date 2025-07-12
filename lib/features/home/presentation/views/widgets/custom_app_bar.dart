@@ -11,12 +11,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        right: 30,
-        left: 30,
-        top: 40,
-        bottom: 20,
-      ),
+      padding: const EdgeInsets.only(right: 30, left: 30, top: 40, bottom: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -25,10 +20,7 @@ class CustomAppBar extends StatelessWidget {
             onPressed: () {
               GoRouter.of(context).push(AppRouter.kSearchView);
             },
-            icon: const Icon(
-              FontAwesomeIcons.magnifyingGlass,
-              size: 24,
-            ),
+            icon: const Icon(FontAwesomeIcons.magnifyingGlass, size: 24),
           ),
         ],
       ),

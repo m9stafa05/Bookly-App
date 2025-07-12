@@ -51,9 +51,7 @@ class BookListViewItem extends StatelessWidget {
                   const Gap(3),
                   Text(
                     'J.K. Rowling',
-                    style: Styles.textStyle14.copyWith(
-                      color: Colors.grey,
-                    ),
+                    style: Styles.textStyle14.copyWith(color: Colors.grey),
                   ),
                   const Gap(3),
                   Row(

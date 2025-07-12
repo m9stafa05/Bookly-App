@@ -24,9 +24,7 @@ class BookRating extends StatelessWidget {
         const Gap(5),
         Text(
           '(5242)',
-          style: Styles.textStyle16.copyWith(
-            color: const Color(0xff707070),
-          ),
+          style: Styles.textStyle16.copyWith(color: const Color(0xff707070)),
         ),
       ],
     );
