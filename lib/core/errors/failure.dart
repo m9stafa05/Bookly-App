@@ -19,9 +19,7 @@ class ServerFailure extends Failure {
         );
 
       case DioExceptionType.sendTimeout:
-        return ServerFailure(
-          'Send request timed out. Please try again.',
-        );
+        return ServerFailure('Send request timed out. Please try again.');
 
       case DioExceptionType.receiveTimeout:
         return ServerFailure(
@@ -40,9 +38,7 @@ class ServerFailure extends Failure {
         );
 
       case DioExceptionType.cancel:
-        return ServerFailure(
-          'Request was cancelled. Please try again.',
-        );
+        return ServerFailure('Request was cancelled. Please try again.');
 
       case DioExceptionType.connectionError:
         return ServerFailure(
@@ -70,11 +66,9 @@ class ServerFailure extends Failure {
 
     // Step 1: Default message based on status code
     if (statusCode == null) {
-      message =
-          'An unexpected error occurred. Please try again later.';
+      message = 'An unexpected error occurred. Please try again later.';
     } else if (statusCode >= 500) {
-      message =
-          'Something went wrong on our end. Please try again later.';
+      message = 'Something went wrong on our end. Please try again later.';
     } else if (statusCode == 404) {
       message = 'The requested resource was not found.';
     } else if (statusCode == 401) {
