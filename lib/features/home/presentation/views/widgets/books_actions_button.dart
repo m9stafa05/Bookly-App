@@ -19,7 +19,7 @@ class BooksActionButton extends StatelessWidget {
                 bottomLeft: Radius.circular(10),
               ),
               fontSize: 22,
-              text: '19.99€',
+              text: 'Free',
             ),
           ),
           Expanded(
