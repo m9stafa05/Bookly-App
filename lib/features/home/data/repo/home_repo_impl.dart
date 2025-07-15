@@ -51,7 +51,7 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchSmilerBooks({
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({
     required String category,
   }) async {
     try {
