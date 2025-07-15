@@ -1,9 +1,11 @@
+import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/widgets/custom_error.dart';
 import 'package:bookly_app/core/widgets/custom_loading_indicator.dart';
 import 'package:bookly_app/features/home/presentation/manger/similar_books_cubit/similar_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SimilarBooksListView extends StatelessWidget {
   const SimilarBooksListView({super.key});
@@ -16,13 +18,25 @@ class SimilarBooksListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * .18,
             child: ListView.builder(
+              itemCount: state.booksList.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5),
-                  child: CustomBookImage(
-                    imageUrl:
-                        'datayO40+500fXrLF3ktn7nGrhZraN1JH5FcUx7RNrT6hLp6mGpaXQSska04JY7Iysix01NDTMLKeNsbSckNHKsqsEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREH/9k=',
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: GestureDetector(
+                    onTap: () {
+                      GoRouter.of(context).push(
+                        AppRouter.kBookDetailsView,
+                        extra: state.booksList[index],
+                      );
+                    },
+                    child: CustomBookImage(
+                      imageUrl: state
+                          .booksList[index]
+                          .volumeInfo
+                          .imageLinks
+                          .thumbnail,
+                    ),
                   ),
                 );
               },
