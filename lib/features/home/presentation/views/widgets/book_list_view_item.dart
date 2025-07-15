@@ -43,9 +43,9 @@ class BookListViewItem extends StatelessWidget {
                   const Gap(3),
                   Text(
                     overflow: TextOverflow.ellipsis,
-                    bookModel.volumeInfo.authors != null &&
-                            bookModel.volumeInfo.authors!.isNotEmpty
-                        ? bookModel.volumeInfo.authors![0]
+                    (bookModel.volumeInfo.authors != null &&
+                            bookModel.volumeInfo.authors!.isNotEmpty)
+                        ? bookModel.volumeInfo.authors!.join(', ')
                         : 'Unknown Author',
                     style: Styles.textStyle14.copyWith(
                       color: Colors.grey,
@@ -61,7 +61,7 @@ class BookListViewItem extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                      BookRating(rating: 5, count: 5),
+                      const BookRating(),
                     ],
                   ),
                 ],
