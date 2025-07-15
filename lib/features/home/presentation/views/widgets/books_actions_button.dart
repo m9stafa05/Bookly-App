@@ -1,8 +1,7 @@
+import 'package:bookly_app/core/utils/functions/launch_url.dart';
 import 'package:bookly_app/core/widgets/custom_button.dart';
-import 'package:bookly_app/core/widgets/show_snack_bar.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class BooksActionButton extends StatelessWidget {
   const BooksActionButton({super.key, required this.bookModel});
@@ -28,30 +27,13 @@ class BooksActionButton extends StatelessWidget {
           ),
           Expanded(
             child: CustomButton(
-              onPressed: () async {
-                final Uri url = Uri.parse(
-                  bookModel.volumeInfo.previewLink ?? '',
+              onPressed: () {
+                launchCustomUrl(
+                  context,
+                  url: bookModel.volumeInfo.previewLink,
                 );
-                try {
-                  if (await canLaunchUrl(url)) {
-                    await launchUrl(url);
-                  } else {
-                    ShowSnackBar(
-                      message:
-                          'Sorry, could not open the preview link.',
-                      // ignore: use_build_context_synchronously
-                      context: context,
-                    );
-                  }
-                } catch (e) {
-                  ShowSnackBar(
-                    message:
-                        'An error occurred while trying to open the link.',
-                    // ignore: use_build_context_synchronously
-                    context: context,
-                  );
-                }
               },
+
               backgroundColor: const Color(0xffEF8262),
               textColor: Colors.white,
               borderRadius: const BorderRadius.only(
@@ -59,11 +41,19 @@ class BooksActionButton extends StatelessWidget {
                 bottomRight: Radius.circular(10),
               ),
               fontSize: 16,
-              text: 'Free preview',
+              text: getText(bookModel),
             ),
           ),
         ],
       ),
     );
+  }
+
+  String getText(BookModel bookModel) {
+    if (bookModel.volumeInfo.previewLink == null) {
+      return 'Not Available';
+    } else {
+      return 'Free preview';
+    }
   }
 }
